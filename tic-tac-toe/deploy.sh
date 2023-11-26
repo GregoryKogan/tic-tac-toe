@@ -3,6 +3,8 @@
 # abort on errors
 set -e
 
+rm -rf src/cpp/build
+
 # build
 yarn build
 
@@ -25,3 +27,5 @@ git commit -m 'deploy'
 git push -f git@github.com:GregoryKogan/tic-tac-toe.git main:gh-pages
 
 cd -
+
+mkdir src/cpp/build
