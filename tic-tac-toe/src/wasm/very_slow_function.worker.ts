@@ -5,7 +5,7 @@ onmessage = (e) => {
 };
 
 const handleMessage = async (e: MessageEvent) => {
-    let Module = await Main();
+    const Module = await Main();
 
     const very_slow_function = Module.cwrap("very_slow_function", "number", ["number"]);
 
