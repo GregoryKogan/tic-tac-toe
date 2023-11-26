@@ -8,6 +8,9 @@ rm -rf src/cpp/build
 # build
 yarn build
 
+cp src/wasm/tic-tac-toe.wasm dist/assets/tic-tac-toe.wasm
+cp src/wasm/tic-tac-toe.js dist/assets/tic-tac-toe.js
+
 # navigate into the build output directory
 cd dist
 
