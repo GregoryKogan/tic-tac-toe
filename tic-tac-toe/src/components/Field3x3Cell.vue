@@ -2,10 +2,12 @@
   <div @click="onClick" class="field-3x3-cell">
     <v-img
       v-if="store.game3x3.getCell(i, j) == 1"
+      :transition="false"
       src="@/assets/cross.svg"
     ></v-img>
     <v-img
       v-if="store.game3x3.getCell(i, j) == 2"
+      :transition="false"
       src="@/assets/circle.svg"
     ></v-img>
   </div>
