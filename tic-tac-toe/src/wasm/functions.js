@@ -4,7 +4,7 @@ const { make_move } = await new Promise((resolve, reject) => {
     Main().then((m) => {
       Module = m;
 
-      const make_move = Module.cwrap("_make_move", "Uint8Array", ["number"]);
+      const make_move = Module.cwrap("_make_move", "number", ["string"]);
 
       resolve({ make_move });
     });
