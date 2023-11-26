@@ -6,11 +6,11 @@ onmessage = (e) => {
 
 const handleMessage = async (e) => {
   const Module = await Main();
-
-  const very_slow_function = Module.cwrap("very_slow_function", "number", [
+  const workerResult = Module.ccall(
+    "make_move",
     "number",
-  ]);
-
-  const workerResult = very_slow_function(e.data);
+    ["string"],
+    [e.data]
+  );
   postMessage(workerResult);
 };

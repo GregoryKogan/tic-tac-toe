@@ -1,3 +1,5 @@
+import { ai3x3Move } from "@/ai/ai3x3";
+
 export enum GameStatus {
     inProgress,
     draw,
@@ -8,13 +10,15 @@ export enum GameStatus {
 export class Game3x3 {
     field: number[][];
     turn: 1 | 2;
-    constructor() {
+    againstAI: boolean;
+    constructor(againstAI: boolean = true) {
         this.field = [
             [0, 0, 0],
             [0, 0, 0],
             [0, 0, 0],
         ] as number[][];
         this.turn = 1;
+        this.againstAI = againstAI;
     }
 
     getCell(i: number, j: number) {
@@ -74,11 +78,22 @@ export class Game3x3 {
         this.turn = 1;
     }
 
-    makeMove(i: number, j: number) {
+    makeMove(i: number, j: number, player: 1 | 2 = 1) {
         if (this.field[i][j] !== 0) return;
-        if (this.getWinner() !== 0) return;
+        if (this.getStatus() !== GameStatus.inProgress) return;
+        if (this.turn !== player) return;
 
         this.field[i][j] = this.turn;
         this.turn = this.turn === 1 ? 2 : 1;
+
+        if (this.getStatus() !== GameStatus.inProgress) return;
+
+        if (this.againstAI && this.turn === 2)
+            this.makeAIMove();
+    }
+
+    async makeAIMove() {
+        const { i, j } = await ai3x3Move(this.field, this.turn);
+        this.makeMove(i, j, 2);
     }
 }

@@ -18,7 +18,7 @@ if (DEFINED EMSCRIPTEN)
     target_link_options(${PROJECT_NAME} PRIVATE
         "-sMODULARIZE=1"
         "-sEXPORT_NAME='Main'"
-        "-sEXPORTED_FUNCTIONS=['_int_sqrt', '_very_slow_function']"
+        "-sEXPORTED_FUNCTIONS=['_make_move']"
         "-sEXPORTED_RUNTIME_METHODS=['ccall', 'cwrap']"
         "-O3"
     )
