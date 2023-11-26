@@ -1,0 +1,1 @@
+(function(){"use strict";importScripts(new URL("tic-tac-toe.js",location).toString()),onmessage=t=>{e(t)};const e=async t=>{const s=(await Main()).ccall("make_move","number",["string"],[t.data]);postMessage(s)}})();
